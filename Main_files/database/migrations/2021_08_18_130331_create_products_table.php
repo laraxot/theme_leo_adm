@@ -28,6 +28,8 @@ class CreateProductsTable extends Migration
                 $table->string('category_guid');
                 $table->string('variant_category_guid');
                 $table->string('dough_category_guid');
+                $table->integer('iva');
+                $table->string('department');
                 $table->timestamps();
             }
         );

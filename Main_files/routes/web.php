@@ -47,6 +47,8 @@ Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout
 Route::post('/admin/gestione_categorie/crea_categoria/save', [MainController::class, 'create_category'])->name('admin.create_category');
 
 Route::post('/admin/gestione_categorie/aggiungi_prodotto/save', [MainController::class, 'add_product'])->name('admin.add_product');
+
+Route::post('/admin/modifica_prodotto', [MainController::class, 'modify_product'])->name('admin.modify_product');
 //Route::get('/profile/dashboard', [MainController::class, 'dashboard']);
 
 Route::group(['middleware' => ['AuthCheck']], function () {
