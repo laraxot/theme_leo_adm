@@ -1,0 +1,1 @@
+<?php /**PATH C:\TAVOLI\fastorder.laravel\resources\views/layouts/product_page/add_cart_button.blade.php ENDPATH**/ ?>

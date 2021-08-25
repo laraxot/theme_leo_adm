@@ -1,0 +1,1 @@
+My name is <?php echo e($name); ?><?php /**PATH C:\TAVOLI\fastorder.laravel\resources\views/user.blade.php ENDPATH**/ ?>
