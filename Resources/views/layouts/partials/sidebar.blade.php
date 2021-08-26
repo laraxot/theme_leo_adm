@@ -1,7 +1,7 @@
     @php
-        $panel = Panel::get(\Auth::user());
-        $areas = $panel->areas();
-        //dddx($areas);
+        $user_panel = Panel::get(\Auth::user());
+        $areas = $user_panel->areas();
+        //dddx(get_defined_vars());
     @endphp
     <!-- Sidebar  -->
     <nav id="sidebar">
@@ -12,11 +12,11 @@
         <ul class="list-unstyled components">
             <p>Aree</p>
             @if (\Auth::check())
-                @foreach ($areas as $area)
-                    <li>
-                        <a href="#" data-toggle="collapse" aria-expanded="false">{{ $area->area_define_name }}</a>
-                    </li>
-                @endforeach
+                @include('adm_theme::layouts.partials.sidebar.menu')
+                @includeWhen(!Theme::getArea(),'adm_theme::layouts.partials.sidebar.areas')
+                @if ($user_panel->isSuperAdmin())
+                    @include('adm_theme::layouts.partials.sidebar.models')
+                @endif
             @endif
             {{-- <p>Menù di gestione</p>
             <li class="active">
