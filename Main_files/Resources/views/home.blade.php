@@ -6,7 +6,7 @@
         <h1 style="margin-top: 10px;padding-left: 0px;font-family: Montserrat, sans-serif;color: rgb(33,37,41);font-weight: bold;margin-bottom: 15px;">Categorie</h1>
         @include('layouts.homepage.category')
         <div class="second"></div>
-        @include('layouts.global.cart')
+        @include('layouts.global.back_arrow')
     </div>
     @include('layouts.global.foot')
 </body>

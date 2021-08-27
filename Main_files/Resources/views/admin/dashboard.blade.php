@@ -41,7 +41,16 @@
                     <a href="#" data-toggle="collapse" aria-expanded="false">Gestione Stampanti</a>
                 </li>
                 <li>
-                    <a href=" {{ url('admin/gestione_categorie') }} ">Gestione Categorie</a>
+                    <a href="#gestioneCategorieSubmenu" data-toggle="collapse" aria-expanded="false"
+                        class="dropdown-toggle">Gestione Categorie</a>
+                        <ul class="collapse list-unstyled" id="gestioneCategorieSubmenu">
+                            <li>
+                                <a href="{{ url('admin/gestione_categorie_madri') }}">Categorie Madri</a>
+                            </li>
+                            <li>
+                                <a href=" {{ url('admin/gestione_categorie') }} ">Categorie Prodotti</a>
+                            </li>
+                        </ul>
                 </li>
                 <li>
                     <a href="#" data-toggle="collapse" aria-expanded="false">Gestione Portate</a>
@@ -50,7 +59,7 @@
                     <a href="#" data-toggle="collapse" aria-expanded="false">Gestione Lingue</a>
                 </li>
                 <li>
-                    <a href="#" data-toggle="collapse" aria-expanded="false">Profilo Aziendale</a>
+                    <a href="{{ url('admin/profilo_aziendale') }}">Profilo Aziendale</a>
                 </li>
                 <li>
                     <a href="#impostazioniSubmenu" data-toggle="collapse" aria-expanded="false"

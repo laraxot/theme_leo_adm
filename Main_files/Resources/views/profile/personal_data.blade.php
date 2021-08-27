@@ -7,7 +7,7 @@
         @include('layouts.profile_page.account_pages.personal_data.profile_photo')
         @include('layouts.profile_page.account_pages.personal_data.form')
         @include('layouts.profile_page.account_pages.personal_data.buttons')
-        @include('layouts.global.cart')
+        @include('layouts.global.back_arrow')
     </div>
 </body>
 @include('layouts.global.foot')

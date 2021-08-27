@@ -1,10 +1,32 @@
 @php
 
-$products = DB::select('SELECT * FROM products WHERE category_guid = "' . $guid .'" AND store_id = 1');
+$products = DB::select('SELECT * FROM products WHERE category_guid = "' . $guid .'" AND store_id = 1 AND warehouse != "Nascosto"');
+
+//$conditions = ['store_id' => 1, 'category_guid' => $guid];
+
+//$products = \App\Models\Product::where($conditions)->get();
 
 @endphp
+
 @foreach ($products as $product)
-    <a href="{{ url('/product/' . $product->guid) }}"
+<div
+@if ($product->warehouse == "Esaurito")
+    style="background: black; border-radius: 15px;";
+@endif
+>
+@if ($product->warehouse == "Esaurito")
+<div style="position: absolute; background: rgba(255, 255, 255, 0.7); width: 150px; height: 40px; text-align: center; border-radius: 10px;
+            margin-left: 28%; margin-top: 18%">
+    <h1 style="">
+        Esaurito
+    </h1>
+</div>
+@endif
+
+    <a
+    @if ($product->warehouse == "Disponibile")
+    href="{{ url('/product/' . $product->guid) }}"
+    @endif 
         style="color: rgb(24, 24, 24)">
         <div class="w-100"
             style="background: #e6e6e6a4;margin-left: 0px;width: 314px;border-radius: 15px;margin-bottom: 20px;">
@@ -75,6 +97,7 @@ $products = DB::select('SELECT * FROM products WHERE category_guid = "' . $guid 
 
     </div>
     </div>
+</div>
 @endforeach
 
 <div style="margin-bottom: 80px"></div>

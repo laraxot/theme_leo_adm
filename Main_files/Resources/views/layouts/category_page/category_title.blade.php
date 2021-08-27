@@ -1,5 +1,10 @@
 @php
-$categories = DB::select('select * from categories where guid = "' . $guid . '" AND store_id = 1');
+//$categories = DB::select('select * from categories where guid = "' . $guid . '" AND store_id = 1');
+
+$conditions = ['store_id' => 1, 'guid' => $guid];
+
+$categories = \App\Models\Category::where($conditions)->get();
+
 @endphp
 @foreach ($categories as $category)
     <a href="{{ url('/') }}"

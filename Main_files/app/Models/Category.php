@@ -15,6 +15,9 @@ class Category extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
+
+    protected $table='categories';
+
     public function superior_category(): BelongsTo
     {
         return $this->belongsTo(SuperiorCategory::class, 'superior_category_id', 'id');

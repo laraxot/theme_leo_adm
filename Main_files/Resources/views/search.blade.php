@@ -46,7 +46,7 @@
                 </tbody>
             </table>
         @endif
-        @include('layouts.global.cart')
+        @include('layouts.global.back_arrow')
     </div>
     @include('layouts.global.head')
 </body>

@@ -1,5 +1,5 @@
 @php
-$informations = DB::select('select * from informations where store_id = 1');
+$informations = \App\Models\Information::where('store_id', 1)->get();
 @endphp
 @foreach ($informations as $information)
     <div>

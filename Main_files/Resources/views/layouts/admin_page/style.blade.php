@@ -210,4 +210,21 @@
     border-radius: 5px;
 }
 
+.checkbox-round {
+    width: 2.5em;
+    height: 2.5em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    background-color: gray;
+}
+
 </style>

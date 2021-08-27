@@ -1,6 +1,12 @@
 @php
 $superior_categories = DB::select('select * from categories where guid = (SELECT category_guid FROM products WHERE guid = "' . $guid . '") AND store_id = 1');
-$products = DB::select('select * from products where guid = "' . $guid . '" AND store_id = 1');
+
+//$products = DB::select('select * from products where guid = "' . $guid . '" AND store_id = 1');
+
+$conditions = ['store_id' => 1, 'guid' => $guid];
+
+$products = \App\Models\Product::where($conditions)->get();
+
 @endphp
 
 @foreach ($superior_categories as $superior_category)

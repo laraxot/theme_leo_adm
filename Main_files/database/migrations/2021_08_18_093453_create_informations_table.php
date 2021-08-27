@@ -19,6 +19,8 @@ class CreateInformationsTable extends Migration
             $table->string("store_email");
             $table->string("store_address");
             $table->string("store_phone_number");
+            $table->string("store_p_iva");
+            $table->string("store_logo");
             $table->string("store_maps_url");
             $table->string("store_maps_api");
             $table->timestamps();

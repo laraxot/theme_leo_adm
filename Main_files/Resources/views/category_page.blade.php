@@ -7,7 +7,7 @@
         <div style="background-color: #f8f9fa;">
             @include('layouts.category_page.category_title')
             @include('layouts.category_page.products')
-            @include('layouts.global.cart')
+            @include('layouts.global.back_arrow')
         </div>
     </div>
     @include('layouts.global.foot')

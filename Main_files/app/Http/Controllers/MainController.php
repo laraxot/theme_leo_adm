@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -130,6 +131,48 @@ class MainController extends Controller
         return view('admin.dashboard', $data);
     }
 
+    function profilo_aziendale()
+    {
+        $data = ['LoggedUserInfo' => User::where('id', '=', session('LoggedUser'))->first()];
+        return view('admin.profilo_aziendale.dashboard', $data);
+    }
+
+    function modify_information(Request $request) {
+
+        $request->validate([
+            'store_name' => 'required',
+            'store_email' => 'required',
+            'store_phone_number' => 'required',
+            'store_p_iva' => 'required',
+            'store_logo' => 'required',
+            'store_address' => 'required',
+            'store_maps_url' => 'required',
+            'store_maps_api' => 'required',
+        ]);
+
+        DB::table('informations')->where('store_id', 1)->update(
+            [
+            'store_name'=>$request->store_name,
+            'store_email'=>$request->store_email,
+            'store_phone_number'=>$request->store_phone_number,
+            'store_p_iva'=>$request->store_p_iva,
+            'store_logo'=>$request->store_logo,
+            'store_address'=>$request->store_address,
+            'store_maps_url'=>$request->store_maps_url,
+            'store_maps_api'=>$request->store_maps_api,
+            ],
+        );
+
+        return back()->with('success', 'Modifica della categoria avvenuta con successo');;
+
+    }
+
+    function gestione_categorie_madri()
+    {
+        $data = ['LoggedUserInfo' => User::where('id', '=', session('LoggedUser'))->first()];
+        return view('admin.gestione_categorie.categorie_madri', $data);
+    }
+
     function gestione_categorie()
     {
         $data = ['LoggedUserInfo' => User::where('id', '=', session('LoggedUser'))->first()];
@@ -167,6 +210,32 @@ class MainController extends Controller
         }
     }
 
+    function modify_category(Request $request) {
+
+        $request->validate([
+            'name' => 'required',
+            'guid' => 'required',
+            'img' => '',
+            'superior_category_guid' => 'required',
+        ]);
+
+        DB::table('categories')->where('guid', $request->guid)->update(
+            ['name'=>$request->name,
+            'guid'=>$request->guid,
+            'img'=>$request->img,
+            'superior_category_guid'=>$request->superior_category_guid,
+            ],
+        );
+
+        return back()->with('success', 'Modifica della categoria avvenuta con successo');;
+
+    }
+
+    function delete_category($guid) {
+        DB::table('categories')->where('guid', $guid)->delete();
+        return redirect('/admin/gestione_categorie');
+    }
+
     function add_product(Request $request)
     {
         //return $request->input();
@@ -177,10 +246,13 @@ class MainController extends Controller
             'img' => '',
             'price' => 'required',
             'maxi_price' => '',
-            'info' => 'required',
+            'info' => '',
             'category_guid' => '',
             'variant_category_guid' => '',
             'dough_category_guid' => '',
+            'warehouse' => '',
+            'iva' => '',
+            'department' => '',
         ]);
 
         $product = new Product();
@@ -195,6 +267,9 @@ class MainController extends Controller
         $product->category_guid = $request->category_guid;
         $product->variant_category_guid = $request->variant_category_guid;
         $product->dough_category_guid = $request->dough_category_guid;
+        $product->warehouse = $request->warehouse;
+        $product->iva = $request->iva;
+        $product->department = $request->department;
         $save = $product->save();
 
         if ($save) {
@@ -204,24 +279,43 @@ class MainController extends Controller
         }
     }
 
-    function modify_product($request, $product_guid) {
+    function modify_product(Request $request) {
 
         $request->validate([
             'name' => 'required',
-            'guid' => 'required',
+            //'guid' => 'required',
             'recipes' => 'required',
             'img' => '',
             'price' => 'required',
             'maxi_price' => '',
-            'info' => 'required',
+            'info' => '',
             'category_guid' => '',
             'variant_category_guid' => '',
             'dough_category_guid' => '',
+            'warehouse' => '',
         ]);
 
-        /*-----------------------------
-        DA FINIRE
-        -----------------------------*/
+        DB::table('products')->where('guid', $request->guid)->update(
+            ['name'=>$request->name,
+             'recipes'=>$request->recipes,
+             'img'=>$request->img,
+             'price'=>$request->price,
+             'maxi_price'=>$request->maxi_price,
+             'info'=>$request->info,
+             'category_guid'=>$request->category_guid,
+             'variant_category_guid'=>$request->variant_category_guid,
+             'dough_category_guid'=>$request->dough_category_guid,
+             'warehouse'=>$request->warehouse,
+            ],
+        );
+
+        return back()->with('success', 'Modifica del prodotto avvenuta con successo');;
 
     }
+
+    function delete_product($guid, $category_guid) {
+        DB::table('products')->where('guid', $guid)->delete();
+        return redirect('/admin/gestione_categorie/' . $category_guid);
+    }
+
 }

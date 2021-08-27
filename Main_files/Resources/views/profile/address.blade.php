@@ -16,7 +16,7 @@
         @include('layouts.profile_page.account_pages.address_page.add_address')
         @include('layouts.profile_page.account_pages.personal_data.buttons')
         <div style="margin-bottom: 200px"></div>
-        @include('layouts.global.cart')
+        @include('layouts.global.back_arrow')
     </div>
 </body>
 

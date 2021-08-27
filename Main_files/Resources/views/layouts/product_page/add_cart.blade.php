@@ -1,5 +1,9 @@
 @php
-$products_price = DB::select('select * from products where guid =  "' . $guid . '" AND store_id = 1');
+//$products_price = DB::select('select * from products where guid =  "' . $guid . '" AND store_id = 1');
+
+$conditions = ['store_id' => 1, 'guid' => $guid];
+
+$products_price = \App\Models\Product::where($conditions)->get();
 @endphp
 @foreach ($products_price as $product_price)
     <nav class="navbar navbar-light navbar-expand-md fixed-bottom" style="background-color: #f8f9fa;">

@@ -1,5 +1,9 @@
 @php
-$superior_categories = DB::select('select * from categories where superior_category_guid = "root" AND store_id = 1');
+//$superior_categories = DB::select('select * from categories where superior_category_guid = "root" AND store_id = 1');
+
+$conditions = ['store_id' => 1, 'superior_category_guid' => 'root'];
+
+$superior_categories = \App\Models\Category::where($conditions)->get();
 @endphp
 
 <div style="background: rgba(156,27,27,0);margin-top: 84px;">

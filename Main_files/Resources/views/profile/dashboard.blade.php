@@ -16,7 +16,7 @@
             @include('layouts.profile_page.second_settings')
         </div>
         @include('layouts.profile_page.logout_button')
-        @include('layouts.global.cart')
+        @include('layouts.global.back_arrow')
     </div>
     @include('layouts.global.head')
 </body>

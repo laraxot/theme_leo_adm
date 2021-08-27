@@ -7,7 +7,7 @@
                 class="icon ion-ios-arrow-back" style="margin-right: 10px;"></i>Cambia password</h1>
         @include('layouts.profile_page.account_pages.change_password_page.form')
         @include('layouts.profile_page.account_pages.personal_data.buttons')
-        @include('layouts.global.cart')
+        @include('layouts.global.back_arrow')
     </div>
 </body>
 
