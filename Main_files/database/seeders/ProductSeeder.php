@@ -1,19 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class ProductSeeder extends Seeder
-{
+class ProductSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
+    public function run() {
         DB::table('products')->insert([
             'name' => 'Amatriciana',
             'guid' => 'amatriciana',
@@ -22,10 +22,13 @@ class ProductSeeder extends Seeder
             'price' => 6.50,
             'maxi_price' => 9.00,
             'reduction_price' => 0.00,
-            'info' => "",
+            'info' => '',
             'category_guid' => 'le-classiche',
             'variant_category_guid' => 'varianti-pizze',
             'dough_category_guid' => 'impasti-pizze',
+            'warehouse' => '',
+            'iva' => '12345678',
+            'department' => '',
         ]);
 
         DB::table('products')->insert([
@@ -36,10 +39,13 @@ class ProductSeeder extends Seeder
             'price' => 6.50,
             'maxi_price' => 9.00,
             'reduction_price' => 0.00,
-            'info' => "",
+            'info' => '',
             'category_guid' => 'le-classiche',
             'variant_category_guid' => 'varianti-pizze',
             'dough_category_guid' => 'impasti-pizze',
+            'warehouse' => '',
+            'iva' => '12345678',
+            'department' => '',
         ]);
 
         DB::table('products')->insert([
@@ -50,10 +56,13 @@ class ProductSeeder extends Seeder
             'price' => 1.00,
             'maxi_price' => 1.50,
             'reduction_price' => 0.00,
-            'info' => "",
+            'info' => '',
             'category_guid' => 'varianti-pizze',
             'variant_category_guid' => '',
             'dough_category_guid' => '',
+            'warehouse' => '',
+            'iva' => '12345678',
+            'department' => '',
         ]);
 
         DB::table('products')->insert([
@@ -64,10 +73,13 @@ class ProductSeeder extends Seeder
             'price' => 0.50,
             'maxi_price' => 1.00,
             'reduction_price' => 0.00,
-            'info' => "",
+            'info' => '',
             'category_guid' => 'varianti-pizze',
             'variant_category_guid' => '',
             'dough_category_guid' => '',
+            'warehouse' => '',
+            'iva' => '12345678',
+            'department' => '',
         ]);
 
         DB::table('products')->insert([
@@ -78,10 +90,13 @@ class ProductSeeder extends Seeder
             'price' => 2.00,
             'maxi_price' => 3.00,
             'reduction_price' => 0.00,
-            'info' => "",
+            'info' => '',
             'category_guid' => 'impasti-pizze',
             'variant_category_guid' => '',
             'dough_category_guid' => '',
+            'warehouse' => '',
+            'iva' => '12345678',
+            'department' => '',
         ]);
     }
 }
